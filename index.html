@@ -50,57 +50,7 @@
             padding: 10px 0;
             background: rgba(0, 0, 0, 0.2);
         }
-    </style>
-</head>
-<body>
-    <div class="vaporwave-text">
-        <h1>测试测试</h1>
-    </div>
-
-    <div class="key-container">
-        <div class="key" data-key="65">A</div>
-        <div class="key" data-key="83">S</div>
-        <div class="key" data-key="68">D</div>
-        <div class="key" data-key="70">F</div>
-    </div>
-
-    <script>
-        const keys = document.querySelectorAll('.key');
-        const pressedKeys = [];
-
-        keys.forEach(key => {
-            key.addEventListener('mousedown', function () {
-                this.classList.add('pressed');
-                pressedKeys.push(this.dataKey);
-            });
-            key.addEventListener('mouseup', function () {
-                this.classList.remove('pressed');
-            });
-        });
-
-        document.addEventListener('keydown', function (event) {
-            const key = event.key;
-            const allKeys = document.querySelectorAll('.key');
-            allKeys.forEach(k => {
-                if (k.dataKey === key) {
-                    k.classList.add('pressed');
-                    setTimeout(() => k.classList.remove('pressed'), 100);
-                }
-            });
-        });
-
-        document.addEventListener('keyup', function (event) {
-            const key = event.key;
-            const allKeys = document.querySelectorAll('.key');
-            allKeys.forEach(k => {
-                if (k.dataKey === key) {
-                    k.classList.remove('pressed');
-                }
-            });
-        });
-
-
-         .gradient-background {
+        .gradient-background {
             position: absolute;
             top: 0;
             left: 0;
@@ -147,8 +97,52 @@
 </head>
 <body>
     <div class="gradient-background"></div>
-    <!-- Generate multiple geometric shapes -->
+    <div class="vaporwave-text">
+        <h1>测试测试</h1>
+    </div>
+
+    <div class="key-container">
+        <div class="key" data-key="65">A</div>
+        <div class="key" data-key="83">S</div>
+        <div class="key" data-key="68">D</div>
+        <div class="key" data-key="70">F</div>
+    </div>
+
     <script>
+        const keys = document.querySelectorAll('.key');
+        const pressedKeys = [];
+
+        keys.forEach(key => {
+            key.addEventListener('mousedown', function () {
+                this.classList.add('pressed');
+                pressedKeys.push(this.getAttribute('data-key'));
+            });
+            key.addEventListener('mouseup', function () {
+                this.classList.remove('pressed');
+            });
+        });
+
+        document.addEventListener('keydown', function (event) {
+            const key = event.keyCode;
+            const allKeys = document.querySelectorAll('.key');
+            allKeys.forEach(k => {
+                if (k.getAttribute('data-key') === key.toString()) {
+                    k.classList.add('pressed');
+                    setTimeout(() => k.classList.remove('pressed'), 100);
+                }
+            });
+        });
+
+        document.addEventListener('keyup', function (event) {
+            const key = event.keyCode;
+            const allKeys = document.querySelectorAll('.key');
+            allKeys.forEach(k => {
+                if (k.getAttribute('data-key') === key.toString()) {
+                    k.classList.remove('pressed');
+                }
+            });
+        });
+
         const shapes = [];
         for (let i = 0; i < 10; i++) {
             const shape = document.createElement('div');
@@ -159,5 +153,6 @@
             shapes.push(shape);
         }
     </script>
+    
 </body>
 </html>
