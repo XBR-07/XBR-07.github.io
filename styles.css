@@ -1,0 +1,158 @@
+/* 基础样式 */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4;
+}
+
+/* 头部样式 */
+header {
+    background: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+/* 导航样式 */
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #ccc;
+}
+
+/* 下拉菜单样式 */
+.has-dropdown:hover .dropdown {
+    display: block;
+}
+
+/* 主要内容样式 */
+main.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    background: #fff;
+    margin: 20px auto;
+    max-width: 1200px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 文章样式 */
+article {
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+
+/* 个人资料图片样式 */
+.profile-pic {
+    float: left;
+    margin-right: 15px;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+/* 阅读更多链接样式 */
+.read-more {
+    display: block;
+    text-align: right;
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.read-more:hover {
+    color: #007bff;
+}
+
+/* 页脚样式 */
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+}
+
+/* 响应式设计 */
+@media (max-width: 600px) {
+    nav ul li {
+        display: block;
+        text-align: center;
+    }
+
+    .profile-pic {
+        float: none;
+        display: block;
+        margin: 0 auto 15px;
+    }
+}
+
+/* 弹窗背景 */
+.popup {
+    display: none; /* 默认隐藏弹窗 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* 半透明背景 */
+    justify-content: center;
+    align-items: center;
+}
+
+/* 弹窗内容 */
+.popup-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    width: 50%;
+    max-width: 500px; /* 限制弹窗内容的最大宽度 */
+    text-align: center;
+    position: relative; /* 确保关闭按钮可以绝对定位 */
+}
+
+/* 关闭按钮 */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 30px;
+    cursor: pointer;
+    color: #333; /* 关闭按钮的颜色 */
+}
+
+/* 弹窗出现时的动画 */
+.popup.show {
+    display: flex; /* 使用 flex 布局显示弹窗 */
+    animation: fadeIn 0.5s ease forwards; /* 添加淡入动画 */
+}
+
+/* 弹窗淡入动画 */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* 弹窗关闭时的动画 */
+.close-btn:hover {
+    color: #007bff; /* 鼠标悬停时关闭按钮的颜色变化 */
+}
