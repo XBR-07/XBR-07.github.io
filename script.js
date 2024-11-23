@@ -29,3 +29,44 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 });
+
+// scripts.js
+
+document.addEventListener('DOMContentLoaded', function() {
+    const stars = [];
+    const numberOfStars = 200; // 星星的数量
+
+    // 创建星星
+    function createStars() {
+        for (let i = 0; i < numberOfStars; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + 'vw';
+            star.style.top = Math.random() * 100 + 'vh';
+            star.style.animationDuration = Math.random() * 3 + 1 + 's';
+            star.style.animationDelay = Math.random() * 10 + 's';
+            star.style.width = Math.random() * 2 + 1 + 'px';
+            star.style.height = star.style.width; // 保持圆形
+            star.style.backgroundImage = 'radial-gradient(circle, white, transparent)';
+            document.body.appendChild(star);
+            stars.push(star);
+        }
+    }
+
+    // 移动星星
+    function moveStars() {
+        stars.forEach(star => {
+            const left = parseFloat(star.style.left);
+            const newLeft = (left - 0.5) + 'vw';
+            if (newLeft < -100) {
+                star.style.left = '100vw';
+            } else {
+                star.style.left = newLeft;
+            }
+        });
+        requestAnimationFrame(moveStars);
+    }
+
+    createStars();
+    moveStars();
+});
