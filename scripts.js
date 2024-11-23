@@ -57,9 +57,8 @@ function createAndMoveStars() {
 
             if (newLeft < -star.offsetWidth) {
                 star.style.left = '100vw'; // 从右侧重新进入
-            } else if (newLeft > window.innerWidth) {
-                star.style.left = '-100vw'; // 从左侧重新进入
-            } else {
+            } 
+            else {
                 star.style.left = newLeft + 'px'; // 正常移动
             }
         });
