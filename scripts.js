@@ -59,7 +59,7 @@ function getRandomColor() {
     }
     return color;
 }
-    }
+    
 
    function moveStars() {
     stars.forEach(star => {
