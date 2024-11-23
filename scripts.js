@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 document.addEventListener('DOMContentLoaded', function() {
     const stars = [];
-    const numberOfStars = 520; // 星星的数量
+    const numberOfStars = 200; // 星星的数量
 
     // 创建星星
     function createStars() {
@@ -56,24 +56,24 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // 移动星星
-   function moveStars() {
-    stars.forEach(star => {
-        const left = parseFloat(star.style.left);
-        const speed = Math.random() * 2 + 1; // 星星移动的速度，可以根据需要调整
-        const newLeft = (left - speed) + 'px';
+    function moveStars() {
+        stars.forEach(star => {
+            const left = parseFloat(star.style.left);
+            const newLeft = (left - 0.5) + 'vw';
+            
+           if (left - speed < -star.offsetWidth){
+               star.style.left = '100vw';
+           }
+            
+            if (newLeft < -100) {
+                star.style.left = '100vw';
+            } else {
+                star.style.left = newLeft;
+            }
+        });
+        requestAnimationFrame(moveStars);
+    }
 
-        // 检查星星是否已经移动出屏幕右侧
-        if (left - speed < -star.offsetWidth) {
-            star.style.left = '100vw'; // 从右侧重新进入
-        } else if (left - speed > window.innerWidth) { // 检查是否移动出屏幕左侧
-            star.style.left = '-100vw'; // 从左侧重新进入
-        } else {
-            star.style.left = newLeft; // 正常移动
-        }
-    });
-
-    requestAnimationFrame(moveStars); // 继续动画循环
-}
     createStars();
     moveStars();
 });
