@@ -32,35 +32,36 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-@keyframes changeColor {
-    0%   {color: white;}
-    25%  {color: #ff7f50;}
-    50%  {color: #6495ed;}
-    75%  {color: #da70d6;}
-    100% {color: white;}
-}
+// scripts.js
 
-
+document.addEventListener('DOMContentLoaded', function() {
+    const stars = [];
+    const numberOfStars = 200; // 星星的数量
 
     // 创建星星
    function createStars() {
-    const numberOfStars = 200; // 星星的数量
-
+    const numberOfStars = 200;
     for (let i = 0; i < numberOfStars; i++) {
         const star = document.createElement('div');
         star.className = 'star';
         star.style.left = Math.random() * window.innerWidth + 'px';
         star.style.top = Math.random() * window.innerHeight + 'px';
-        star.style.opacity = Math.random(); // 随机透明度
-        star.style.animationName = 'changeColor'; // 应用颜色变化动画
-        star.style.animationDuration = Math.random() * 3 + 2 + 's'; // 随机动画持续时间
-        star.style.animationIterationCount = 'infinite'; // 无限循环动画
-        star.style.animationTimingFunction = 'linear'; // 线性动画
+        star.style.backgroundColor = getRandomColor(); // 随机颜色
         document.body.appendChild(star);
     }
 }
-    // 移动星星
-    function moveStars() {
+
+function getRandomColor() {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+    }
+
+   function moveStars() {
     stars.forEach(star => {
         const left = parseFloat(star.style.left);
         const speed = Math.random() * 2 + 1; // 星星移动的速度，可以根据需要调整
@@ -80,5 +81,4 @@ document.addEventListener('DOMContentLoaded', function() {
 }
     createStars();
     moveStars();
-    
 });
