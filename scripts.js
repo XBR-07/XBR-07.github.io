@@ -40,9 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
     100% {color: white;}
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    const stars = [];
-    const numberOfStars = 520; // 星星的数量
+
 
     // 创建星星
    function createStars() {
