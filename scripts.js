@@ -36,31 +36,26 @@ document.addEventListener('DOMContentLoaded', function() {
 
 document.addEventListener('DOMContentLoaded', function() {
     const stars = [];
-    const numberOfStars = 200; // 星星的数量
+    const numberOfStars = 520; // 星星的数量
 
     // 创建星星
-   function createStars() {
-    const numberOfStars = 200;
-    for (let i = 0; i < numberOfStars; i++) {
-        const star = document.createElement('div');
-        star.className = 'star';
-        star.style.left = Math.random() * window.innerWidth + 'px';
-        star.style.top = Math.random() * window.innerHeight + 'px';
-        star.style.backgroundColor = getRandomColor(); // 随机颜色
-        document.body.appendChild(star);
+    function createStars() {
+        for (let i = 0; i < numberOfStars; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + 'vw';
+            star.style.top = Math.random() * 100 + 'vh';
+            star.style.animationDuration = Math.random() * 3 + 1 + 's';
+            star.style.animationDelay = Math.random() * 10 + 's';
+            star.style.width = Math.random() * 2 + 1 + 'px';
+            star.style.height = star.style.width; // 保持圆形
+            star.style.backgroundImage = 'radial-gradient(circle, white, transparent)';
+            document.body.appendChild(star);
+            stars.push(star);
+        }
     }
-}
 
-function getRandomColor() {
-    const letters = '0123456789ABCDEF';
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-}
-    
-
+    // 移动星星
    function moveStars() {
     stars.forEach(star => {
         const left = parseFloat(star.style.left);
