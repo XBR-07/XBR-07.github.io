@@ -69,3 +69,17 @@ function createAndMoveStars() {
     createStars();
     moveStars();
 }
+
+
+    // 获取“About”按钮的DOM元素
+    const aboutButton = document.querySelector('.about-link');
+
+    // 为“About”按钮添加点击事件监听器
+    aboutButton.addEventListener('click', function(event) {
+        // 阻止<a>标签的默认行为（即不让它导航到href指定的URL）
+        event.preventDefault();
+
+        // 使用JavaScript进行页面跳转
+        window.location.href = 'about.html';
+    });
+});
